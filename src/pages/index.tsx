@@ -1,20 +1,35 @@
 import Navbar from "@/components/Navbar/Navbar";
-import ToggleSwitch from "@/components/ToggleSwitch";
 import { type NextPage } from "next";
-import { Session } from "next-auth";
-import { useSession } from "next-auth/react";
+// import { Session } from "next-auth";
+// import { useSession } from "next-auth/react";
 import Head from "next/head";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+// import Link from "next/link";
+import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 
 
 const Home: NextPage = () => {
-  const { data, status } = useSession();
+
+  // Function to display the text character by character
+  function typeWriter(text: string, element: any) {
+    let charIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (charIndex < text.length) {
+        element.textContent += text.charAt(charIndex);
+        charIndex++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 100); // Adjust the typing speed by changing the interval (in milliseconds)
+  }
+
+  // Define the text to be typed
+  const text = "Welcome to my website";
 
   useEffect(() => {
+    typeWriter(text, document.getElementById("typed-text"));
     toast.success("Welcome to my portfolio", {
       position: "top-right",
       autoClose: 2000,
@@ -36,7 +51,13 @@ const Home: NextPage = () => {
             <Navbar />
           </div>
           <div>
-            <h1 className="text-4xl text-white">Hello World</h1>
+            <div>
+              <div className="typewriter">
+                <h1 className="text-white text-4xl font-bold text-center mt-10">
+                  <span id="typed-text"></span>
+                </h1>
+              </div>
+            </div>
           </div>
 
         </div>
