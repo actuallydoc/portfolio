@@ -24,7 +24,7 @@ export default function Navbar() {
         <div className='flex'>
             <div className='flex rounded-sm w-full p-3 space-x-3  pb-5 bg-gradient-to-b from-[#1e1629] to-[#04061d]'>
                 {NavbarPortfolioItems.map((item, index) => (
-                    <div>
+                    <div key={index}>
                         <button onClick={() => {
                             handleNavItemClick(index)
                         }} key={index} className={`text-white pb-2 mt-3 ml-3 border-slate-400  rounded-xl p-2 hover:scale-105 duration-150  ${item === navState ? 'bg-[#1e1629] rounded-lg' : null}`}>{item}</button>
