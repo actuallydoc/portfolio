@@ -43,6 +43,7 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   },
+  secret: env.NEXTAUTH_SECRET,
   providers: [
     DiscordProvider({
       clientId: env.DISCORD_CLIENT_ID,
