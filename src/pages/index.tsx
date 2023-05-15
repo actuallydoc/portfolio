@@ -9,11 +9,10 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 
-
 const Home: NextPage = () => {
 
   // Function to display the text character by character
-  function typeWriter(text: string, element: any) {
+  function typeWriter(text: string, element: HTMLElement) {
     let charIndex = 0;
     const typingInterval = setInterval(() => {
       if (charIndex < text.length) {
@@ -29,7 +28,7 @@ const Home: NextPage = () => {
   const text = "Welcome to my website";
 
   useEffect(() => {
-    typeWriter(text, document.getElementById("typed-text"));
+    typeWriter(text, document.getElementById("typed-text") as HTMLElement);
     toast.success("Welcome to my portfolio", {
       position: "top-right",
       autoClose: 2000,
