@@ -9,14 +9,6 @@ export default function Navbar() {
     const [navState, setNavState] = React.useState<string>("Home")
     const [state, setState] = useState<boolean>(false)
     const handleNavItemClick = (index: number) => {
-        toast.success(`You clicked ${NavbarPortfolioItems[index as number]}`, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            draggable: true,
-        });
-
         setNavState(NavbarPortfolioItems[index as number] as string)
     }
 
@@ -35,7 +27,7 @@ export default function Navbar() {
                     <div>
                         <button onClick={() => {
                             handleNavItemClick(index)
-                        }} className={`text-white pb-2 mt-3 ml-3 border-slate-400  rounded-xl p-2 hover:scale-105 duration-150  ${item === navState ? "bg-[#1e1629] rounded-lg" : null}`}>{item}</button>
+                        }} key={index} className={`text-white pb-2 mt-3 ml-3 border-slate-400  rounded-xl p-2 hover:scale-105 duration-150  ${item === navState ? 'bg-[#1e1629] rounded-lg' : null}`}>{item}</button>
                     </div>
                 ))}
                 <div className='flex justify-end items-center ml-auto' >
