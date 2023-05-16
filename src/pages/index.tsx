@@ -29,7 +29,7 @@ const Home: NextPage<{ userSession: Session }> = ({ userSession }) => {
   }
   const [animateContact, setAnimateContact] = React.useState<boolean>(false)
   const [animateAbout, setAnimateAbout] = React.useState<boolean>(false)
-  const [animateTypeWritter, setAnimateTypeWritter] = React.useState<boolean>(false)
+  const [animateTypeWritter] = React.useState<boolean>(false)
 
   useEffect(() => {
     typeWriter("Welcome to my website", document.getElementById("typed-text") as HTMLElement);
