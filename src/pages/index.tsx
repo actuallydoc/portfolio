@@ -87,14 +87,14 @@ export const getServerSideProps: GetServerSideProps = async (context: GetSession
   const userSession = await getSession(context);
   // console.log(userSession?.user.name);
   //Maybe fetch the user data here idk
-  if (!userSession) {
-    return {
-      redirect: {
-        destination: "/api/auth/signin",
-        permanent: false,
-      },
-    };
-  }
+  // if (!userSession) {
+  //   return {
+  //     redirect: {
+  //       destination: "/api/auth/signin",
+  //       permanent: false,
+  //     },
+  //   };
+  // }
   return {
     props: { userSession },
   };
