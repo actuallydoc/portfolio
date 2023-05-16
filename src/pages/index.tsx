@@ -1,9 +1,9 @@
 import AboutCard from "@/components/Cards/AboutCard";
 import ContactCard from "@/components/Cards/ContactCard";
 import Navbar from "@/components/Navbar/Navbar";
-import { GetServerSideProps, type NextPage } from "next";
-import { Session } from "next-auth";
-import { GetSessionParams, getSession, useSession } from "next-auth/react";
+import { type GetServerSideProps, type NextPage } from "next";
+import { type Session } from "next-auth";
+import { type GetSessionParams, getSession } from "next-auth/react";
 // import { Session } from "next-auth";
 // import { useSession } from "next-auth/react";
 import Head from "next/head";
