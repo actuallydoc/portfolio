@@ -29,11 +29,12 @@ const Home: NextPage<{ userSession: Session }> = ({ userSession }) => {
   }
   const [animateContact, setAnimateContact] = React.useState<boolean>(false)
   const [animateAbout, setAnimateAbout] = React.useState<boolean>(false)
-  // Define the text to be typed
-  const text = "Welcome to my website";
+  const [animateTypeWritter, setAnimateTypeWritter] = React.useState<boolean>(false)
 
   useEffect(() => {
-    typeWriter(text, document.getElementById("typed-text") as HTMLElement);
+    typeWriter("Welcome to my website", document.getElementById("typed-text") as HTMLElement);
+  }, [animateTypeWritter])
+  useEffect(() => {
     if (userSession) {
       toast.success(`Welcome ${userSession?.user?.name as string}!`, {
         position: "top-right",
