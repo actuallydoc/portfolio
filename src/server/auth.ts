@@ -35,11 +35,10 @@ declare module "next-auth" {
  */
 export const authOptions: NextAuthOptions = {
   callbacks: {
-    session: ({ session, user }) => ({
+    session: ({ session }) => ({
       ...session,
       user: {
         ...session.user,
-        id: user.id,
       },
     }),
   },

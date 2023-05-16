@@ -1,7 +1,9 @@
 import AboutCard from "@/components/Cards/AboutCard";
 import ContactCard from "@/components/Cards/ContactCard";
 import Navbar from "@/components/Navbar/Navbar";
-import { type NextPage } from "next";
+import { GetServerSideProps, type NextPage } from "next";
+import { Session } from "next-auth";
+import { GetSessionParams, getSession, useSession } from "next-auth/react";
 // import { Session } from "next-auth";
 // import { useSession } from "next-auth/react";
 import Head from "next/head";
@@ -11,7 +13,7 @@ import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-const Home: NextPage = () => {
+const Home: NextPage<{ userSession: Session }> = ({ userSession }) => {
 
   // Function to display the text character by character
   function typeWriter(text: string, element: HTMLElement) {
@@ -26,19 +28,19 @@ const Home: NextPage = () => {
     }, 100); // Adjust the typing speed by changing the interval (in milliseconds)
   }
   const [animateContact, setAnimateContact] = React.useState<boolean>(false)
+  const [animateAbout, setAnimateAbout] = React.useState<boolean>(false)
   // Define the text to be typed
   const text = "Welcome to my website";
 
   useEffect(() => {
     typeWriter(text, document.getElementById("typed-text") as HTMLElement);
-    toast.success("Welcome to my portfolio", {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: true,
-    });
-  }, [])
-
-
+    if (userSession) {
+      toast.success(`Welcome ${userSession?.user?.name as string}!`, {
+        position: "top-right",
+        autoClose: 2000,
+      });
+    }
+  })
   return (
     <>
       <Head>
@@ -49,7 +51,7 @@ const Home: NextPage = () => {
       <main className="flex">
         <div className="min-h-screen bg-gradient-to-b from-[#1e1629] to-[#242038] w-full">
           <div className="w-full shadow-xl">
-            <Navbar animateContact={setAnimateContact} />
+            <Navbar animateAbout={setAnimateAbout} animateContact={setAnimateContact} />
           </div>
           <div>
             <div>
@@ -60,13 +62,15 @@ const Home: NextPage = () => {
               </div>
               <div className="flex space-x-5">
                 <div>
-                  <AboutCard />
+                  <AboutCard animate={animateAbout} />
                 </div>
                 <div>
                   <ContactCard animate={animateContact} />
                 </div>
               </div>
-
+              <div>
+                <div className="site-divider"></div>
+              </div>
             </div>
           </div>
 
@@ -78,3 +82,20 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getServerSideProps: GetServerSideProps = async (context: GetSessionParams | undefined) => {
+  const userSession = await getSession(context);
+  // console.log(userSession?.user.name);
+  //Maybe fetch the user data here idk
+  if (!userSession) {
+    return {
+      redirect: {
+        destination: "/api/auth/signin",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: { userSession },
+  };
+}

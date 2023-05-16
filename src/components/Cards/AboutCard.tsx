@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import React from 'react'
 
-export default function AboutCard() {
+export default function AboutCard({ animate }: { animate: boolean }) {
 
     return (
         <div>
-            <div className='box-border w-80 h-auto ml-5 shadow-xl '>
+            <div className={`box-border w-80 h-auto ml-5 shadow-xl ${animate ? "animate-pulse" : ""}`}>
                 <div className='flex flex-col  mt-5 items-center  rounded-2xl justify-center w-full h-full hover:translate-x-5 duration-150 bg-gradient-to-b from-[#1e1629] to-[#04061d]'>
                     <div className='flex items-center justify-center w-32 h-32 rounded-full bg-gradient-to-b from-[#1e1629] to-[#04061d]'>
                         <div>

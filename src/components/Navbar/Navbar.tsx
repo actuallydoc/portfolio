@@ -5,7 +5,8 @@ import ToggleSwitch from '../ToggleSwitch';
 const NavbarPortfolioItems: string[] = ["Home", "About", "Contact", "Projects", "Resume"]
 
 let contactInterval: NodeJS.Timeout | null = null;
-export default function Navbar({ animateContact }: { animateContact: React.Dispatch<React.SetStateAction<boolean>> }) {
+let aboutInterval: NodeJS.Timeout | null = null;
+export default function Navbar({ animateContact, animateAbout }: { animateContact: React.Dispatch<React.SetStateAction<boolean>>, animateAbout: React.Dispatch<React.SetStateAction<boolean>> }) {
     const [navState, setNavState] = React.useState<string>("Home")
     const [state, setState] = useState<boolean>(false)
     const handleNavItemClick = (index: number) => {
@@ -14,18 +15,25 @@ export default function Navbar({ animateContact }: { animateContact: React.Dispa
             case "Home":
                 break;
             case "Contact":
-                console.log("Contact state started")
                 animateContact(true)
                 if (contactInterval) {
                     clearInterval(contactInterval);
                 }
                 contactInterval = setInterval(() => {
-                    console.log("Contact interval started");
                     animateContact(false);
                     setNavState("Home");
                 }, 3000);
                 break;
-
+            case "About":
+                animateAbout(true)
+                if (aboutInterval) {
+                    clearInterval(aboutInterval);
+                }
+                aboutInterval = setInterval(() => {
+                    animateAbout(false);
+                    setNavState("Home");
+                }, 3000);
+                break;
 
         }
     }
