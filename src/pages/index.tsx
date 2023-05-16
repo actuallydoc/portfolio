@@ -1,13 +1,15 @@
+import AboutCard from "@/components/Cards/AboutCard";
+import ContactCard from "@/components/Cards/ContactCard";
 import Navbar from "@/components/Navbar/Navbar";
 import { type NextPage } from "next";
 // import { Session } from "next-auth";
 // import { useSession } from "next-auth/react";
 import Head from "next/head";
+import React from "react";
 // import Link from "next/link";
 import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
 
 const Home: NextPage = () => {
 
@@ -23,7 +25,7 @@ const Home: NextPage = () => {
       }
     }, 100); // Adjust the typing speed by changing the interval (in milliseconds)
   }
-
+  const [animateContact, setAnimateContact] = React.useState<boolean>(false)
   // Define the text to be typed
   const text = "Welcome to my website";
 
@@ -47,7 +49,7 @@ const Home: NextPage = () => {
       <main className="flex">
         <div className="min-h-screen bg-gradient-to-b from-[#1e1629] to-[#242038] w-full">
           <div className="w-full shadow-xl">
-            <Navbar />
+            <Navbar animateContact={setAnimateContact} />
           </div>
           <div>
             <div>
@@ -56,6 +58,15 @@ const Home: NextPage = () => {
                   <span id="typed-text"></span>
                 </h1>
               </div>
+              <div className="flex space-x-5">
+                <div>
+                  <AboutCard />
+                </div>
+                <div>
+                  <ContactCard animate={animateContact} />
+                </div>
+              </div>
+
             </div>
           </div>
 

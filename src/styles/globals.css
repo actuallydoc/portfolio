@@ -5,3 +5,52 @@
 .typewriter {
     overflow: hidden;
 }
+
+.site-divider {
+    border-bottom: 1px solid #2b2e31;
+    padding: 0.5rem 0;
+    /* Adjust the color as needed */
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.flicker-glow {
+    position: relative;
+    width: 200px;
+    /* Set the desired width */
+    height: 200px;
+    /* Set the desired height */
+    border-radius: 8px;
+    /* Set the desired border radius */
+    background-color: #fff;
+    /* Set the desired background color */
+}
+
+.flicker-glow::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    border-radius: inherit;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.7);
+    animation: flicker 2s infinite;
+}
+
+.flicker-glow:hover::before {
+    opacity: 1;
+}

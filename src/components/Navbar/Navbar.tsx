@@ -2,14 +2,29 @@ import React, { useState } from 'react'
 import { toast } from 'react-toastify';
 import ToggleSwitch from '../ToggleSwitch';
 
-const NavbarPortfolioItems: string[] = ["Home", "About", "Contact", "Projects", "Blog", "Resume"]
+const NavbarPortfolioItems: string[] = ["Home", "About", "Contact", "Projects", "Resume"]
 
 
-export default function Navbar() {
+export default function Navbar({ animateContact }: { animateContact: React.Dispatch<React.SetStateAction<boolean>> }) {
     const [navState, setNavState] = React.useState<string>("Home")
     const [state, setState] = useState<boolean>(false)
     const handleNavItemClick = (index: number) => {
         setNavState(NavbarPortfolioItems[index] as string)
+        switch (NavbarPortfolioItems[index]) {
+            case "Home":
+                break;
+            case "Contact":
+                console.log("Contact state started")
+                animateContact(true)
+                setInterval(() => {
+                    console.log("Contact interval started");
+                    animateContact(false);
+                    setNavState("Home")
+                }, 3000);
+                break;
+
+
+        }
     }
 
     const handleSwitch = () => {
