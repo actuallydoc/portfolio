@@ -1,5 +1,6 @@
 import AboutCard from "@/components/Cards/AboutCard";
 import ContactCard from "@/components/Cards/ContactCard";
+import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 import ProjectLayout from "@/components/Projects/ProjectLayout";
 import { type GetServerSideProps, type NextPage } from "next";
@@ -83,6 +84,9 @@ const Home: NextPage<{ userSession: Session }> = ({ userSession }) => {
                   </div>
                 </div>
               </div>
+            </div>
+            <div>
+              <Footer />
             </div>
           </div>
 
