@@ -44,7 +44,7 @@ const projects: Project[] = [
 export default function ProjectLayout() {
     return (
         <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2 ml-5 ">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-2 ml-5 ">
                 {projects.map((project, index) => (
                     <div key={index} className="bg-slate-400 hover:scale-105 duration-150 w-96 space-y-3 rounded-lg shadow-lg p-4 bg-gradient-to-b from-[#1e1629] to-[#242038]">
                         <div className="flex justify-center">
