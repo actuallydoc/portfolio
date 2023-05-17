@@ -1,6 +1,7 @@
 import AboutCard from "@/components/Cards/AboutCard";
 import ContactCard from "@/components/Cards/ContactCard";
 import Navbar from "@/components/Navbar/Navbar";
+import ProjectLayout from "@/components/Projects/ProjectLayout";
 import { type GetServerSideProps, type NextPage } from "next";
 import { type Session } from "next-auth";
 import { type GetSessionParams, getSession } from "next-auth/react";
@@ -71,6 +72,16 @@ const Home: NextPage<{ userSession: Session }> = ({ userSession }) => {
               </div>
               <div>
                 <div className="site-divider"></div>
+              </div>
+              <div>
+                <div >
+                  <h1 className="text-slate-400 text-4xl my-5 font-bold text-center mt-10">Project&rsquo;s</h1>
+                </div>
+                <div>
+                  <div>
+                    <ProjectLayout />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
