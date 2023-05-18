@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Tooltip from '../Tooltip/Tooltip'
 interface Project {
     title: string,
     description: string,
@@ -57,7 +58,10 @@ export default function ProjectLayout() {
                             <p className="text-white text-sm">{project.description}</p>
                         </div>
                         <div className="flex justify-center">
-                            <a href={project.link} className="text-white bg-black rounded-lg p-2 text-sm">View Project</a>
+                            <Tooltip text="View Project on Github">
+                                <a href={project.link} className="text-white bg-slate-600 rounded-lg p-2 text-sm">View Project</a>
+                            </Tooltip>
+
                         </div>
                     </div>
                 ))}

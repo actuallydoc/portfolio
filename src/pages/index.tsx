@@ -14,9 +14,8 @@ import React from "react";
 import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { ThemeContext } from "./_app";
+// import { ThemeContext } from "./_app";
 import TechnologyCard from "@/components/Cards/TechnologyCard";
-import Tooltip from "@/components/Tooltip/Tooltip";
 
 const Home: NextPage<{ userSession: Session }> = ({ userSession }) => {
 
@@ -36,7 +35,7 @@ const Home: NextPage<{ userSession: Session }> = ({ userSession }) => {
   const [animateAbout, setAnimateAbout] = React.useState<boolean>(false)
   const [animateTypeWritter] = React.useState<boolean>(false)
 
-  const darkTheme = React.useContext(ThemeContext);
+  // const darkTheme = React.useContext(ThemeContext);
 
   useEffect(() => {
     typeWriter("Welcome to my website", document.getElementById("typed-text") as HTMLElement);
