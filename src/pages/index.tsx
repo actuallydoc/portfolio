@@ -15,6 +15,7 @@ import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeContext } from "./_app";
+import TechnologyCard from "@/components/Cards/TechnologyCard";
 
 const Home: NextPage<{ userSession: Session }> = ({ userSession }) => {
 
@@ -67,12 +68,15 @@ const Home: NextPage<{ userSession: Session }> = ({ userSession }) => {
                   <span id="typed-text"></span>
                 </h1>
               </div>
-              <div className="md:flex">
+              <div className="md:flex space-x-5 mt-10">
                 <div>
                   <AboutCard animate={animateAbout} />
                 </div>
                 <div>
                   <ContactCard animate={animateContact} />
+                </div>
+                <div>
+                  <TechnologyCard />
                 </div>
               </div>
               <div>
