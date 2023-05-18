@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { toast } from 'react-toastify';
 import ToggleSwitch from '../ToggleSwitch';
+import { ThemeContext } from '@/pages/_app';
 
 const NavbarPortfolioItems: string[] = ["Home", "About", "Contact", "Projects", "Resume"]
 
@@ -37,9 +38,13 @@ export default function Navbar({ animateContact, animateAbout }: { animateContac
 
         }
     }
+    //!TODO Implement theme switching
+    // const [toggle, setToggle] = React.useState(false);
 
+    // const darkMode = useContext(ThemeContext);
     const handleSwitch = () => {
         setState(!state)
+
         toast.success("Theme switching not implemented yet!", {
             position: "top-right",
             autoClose: 2000,
