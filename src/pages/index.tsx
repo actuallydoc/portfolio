@@ -16,6 +16,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeContext } from "./_app";
 import TechnologyCard from "@/components/Cards/TechnologyCard";
+import Tooltip from "@/components/Tooltip/Tooltip";
 
 const Home: NextPage<{ userSession: Session }> = ({ userSession }) => {
 
@@ -67,6 +68,9 @@ const Home: NextPage<{ userSession: Session }> = ({ userSession }) => {
                 <h1 className="text-white text-4xl font-bold text-center mt-10">
                   <span id="typed-text"></span>
                 </h1>
+              </div>
+              <div>
+
               </div>
               <div className="lg:flex space-x-5 mt-10">
                 <div>

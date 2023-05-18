@@ -54,3 +54,52 @@
 .flicker-glow:hover::before {
     opacity: 1;
 }
+
+.parent {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-slide {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s;
+    position: absolute;
+    right: auto;
+    left: auto;
+    margin-bottom: 0.5rem;
+    width: 70px;
+    background-color: slategray;
+    color: #fff;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    bottom: 100%;
+    padding: 5px 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    width: auto;
+    /* Dynamically adjust the width */
+    white-space: nowrap;
+    /* Prevent line breaks */
+}
+
+.parent:hover .tooltip-slide {
+    visibility: visible;
+    opacity: 1;
+    animation: slidein 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+@keyframes slidein {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
