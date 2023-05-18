@@ -16,7 +16,7 @@ const projects: Project[] = [
     },
     {
         title: "Hulu Clone",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+        description: "Hulu clone made with a course on Youtube.",
         image: "/hulu_clone.png",
         link: "https://github.com/actuallydoc/Hulu-Clone-NextJs"
     },
